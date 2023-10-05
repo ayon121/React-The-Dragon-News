@@ -1,22 +1,26 @@
 
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import { Link } from "react-router-dom";
-
-const Login = () => {
-
-    const handlelogin = e => {
+const Register = () => {
+    const handleRegister = e => {
         e.preventDefault()
         const form = new FormData(e.currentTarget);
         const email = form.get('email')
         const password = form.get('password')
-        console.log(email , password)
+        const name = form.get('name')
     }
     return (
         <div>
-            <h1 className="text-5xl text-center mt-5 mb-2">Login</h1>
+            <h1 className="text-5xl text-center mt-5 mb-2">Register</h1>
             <div className="hero mb-4">
-                <form onSubmit={handlelogin}>
+                <form onSubmit={handleRegister}>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Name</span>
+                        </label>
+                        <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
+                    </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
@@ -28,14 +32,11 @@ const Login = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                        <label className="label">
-                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                        </label>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn bg-black text-white hover:text-black">Login</button>
+                        <button className="btn bg-black text-white hover:text-black">Register</button>
                     </div>
-                    <p className="text-xs pt-2">Do not have a account <Link className="text-blue-700 underline" to="/Register">Register</Link> </p>
+                    <p className="text-xs pt-2">Already have a account <Link className="text-blue-700 underline" to="/Login">Login</Link> </p>
                 </form>
                 
             </div>
@@ -43,8 +44,8 @@ const Login = () => {
     );
 };
 
-Login.propTypes = {
-
+Register.propTypes = {
+    
 };
 
-export default Login;
+export default Register;
